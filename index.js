@@ -3,11 +3,12 @@ const jsonMask = require('json-mask');
 module.exports = (Bookshelf) => {
     Bookshelf.Model = Bookshelf.Model.extend({
         mask: function mask(scopes, options) {
+            const masks = this.constructor.masks;
             let scope = '';
             if (Array.isArray(scopes)) {
                 scope = scopes.map((innerScope) => {
-                    return (this.masks && this.masks[innerScope] ? this.masks[innerScope] : innerScope);
-                }, this.constructor).join(',');
+                    return (masks && masks[innerScope] ? masks[innerScope] : innerScope);
+                }).join(',');
             } else {
                 scope = (this.constructor.masks && this.constructor.masks[scopes] ? this.constructor.masks[scopes] : scope);
             }
