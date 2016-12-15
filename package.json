@@ -6,7 +6,9 @@
   "bugs": {
     "url": "https://github.com/paulleduc/bookshelf-multi-mask/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "json-mask": "^0.3.8"
+  },
   "description": "This Bookshelf.js plugin enables you to define masks on your models and serialize to JSON based on its fields using the json-mask API. It is based on bookshelf-mask, but it allows you to specify an array of scopes instead of just one.",
   "devDependencies": {},
   "directories": {},
