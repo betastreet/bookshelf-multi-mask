@@ -1,18 +1,25 @@
 {
+  "name": "bookshelf-multi-mask",
+  "version": "0.0.3",
+  "description": "This Bookshelf.js plugin enables you to define masks on your models and serialize to JSON based on its fields using the json-mask API. It is based on bookshelf-mask, but it allows you to specify an array of scopes instead of just one.",
+  "homepage": "https://github.com/paulleduc/bookshelf-multi-mask#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulleduc/bookshelf-multi-mask.git"
+  },
   "author": {
     "email": "leduc.paul@gmail.com",
     "name": "Paul Leduc"
   },
+  "maintainers": [
+    {
+      "email": "leduc.paul@gmail.com",
+      "name": "paulleduc"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/paulleduc/bookshelf-multi-mask/issues"
   },
-  "dependencies": {
-    "json-mask": "^0.3.8"
-  },
-  "description": "This Bookshelf.js plugin enables you to define masks on your models and serialize to JSON based on its fields using the json-mask API. It is based on bookshelf-mask, but it allows you to specify an array of scopes instead of just one.",
-  "devDependencies": {},
-  "directories": {},
-  "homepage": "https://github.com/paulleduc/bookshelf-multi-mask#readme",
   "keywords": [
     "bookshelf",
     "plugin",
@@ -22,21 +29,28 @@
     "visibility"
   ],
   "license": "MIT",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "json-mask": "^0.3.8"
+  },
+  "devDependencies": {
+    "bookshelf": ">=0.0.0 <1.0.0",
+    "jest": "^16.0.2",
+    "knex": ">=0.6.10 <0.12.0",
+    "sqlite": "^2.2.4",
+    "sqlite3": "^3.1.8"
+  },
+  "peerDependencies": {
+    "bookshelf": "0.x.x"
+  },
   "main": "index.js",
-  "maintainers": [
-    {
-      "email": "leduc.paul@gmail.com",
-      "name": "paulleduc"
-    }
-  ],
-  "name": "bookshelf-multi-mask",
-  "optionalDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/paulleduc/bookshelf-multi-mask.git"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "version": "0.0.3"
+    "test": "jest",
+    "test-cov": "npm test -- --coverage",
+    "knex": "knex --knexfile test/db/knexfile.js",
+    "migrate": "npm run knex -- migrate:latest",
+    "seed": "npm run knex -- seed:run"
+  }
 }

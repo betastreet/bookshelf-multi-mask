@@ -1,16 +1,19 @@
+'use strict'
+
 const jsonMask = require('json-mask');
 
 module.exports = (Bookshelf) => {
     Bookshelf.Model = Bookshelf.Model.extend({
         mask: function mask(scopes, options) {
             const masks = this.constructor.masks;
+            if (!masks) return this.toJSON(options);
             let scope = '';
             if (Array.isArray(scopes)) {
                 scope = scopes.map((innerScope) => {
                     return (masks && masks[innerScope] ? masks[innerScope] : innerScope);
                 }).join(',');
             } else {
-                scope = (this.constructor.masks && this.constructor.masks[scopes] ? this.constructor.masks[scopes] : scope);
+                scope = (masks && masks[scopes] ? masks[scopes] : scopes);
             }
             return jsonMask(this.toJSON(options), scope);
         },
@@ -19,13 +22,14 @@ module.exports = (Bookshelf) => {
     Bookshelf.Collection = Bookshelf.Collection.extend({
         mask: function mask(scopes, options) {
             const masks = this.model.masks;
+            if (!masks) return this.toJSON(options);
             let scope = '';
             if (Array.isArray(scopes)) {
                 scope = scopes.map((innerScope) => {
                     return (masks && masks[innerScope] ? masks[innerScope] : innerScope);
                 }).join(',');
             } else {
-                scope = (this.model.masks && this.model.masks[scopes] ? this.model.masks[scopes] : scope);
+                scope = (masks && masks[scopes] ? masks[scopes] : scopes);
             }
             return this.toJSON(options).map(model => jsonMask(model, scope));
         },
