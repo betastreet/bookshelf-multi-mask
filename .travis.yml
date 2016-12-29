@@ -1,9 +1,12 @@
 language: node_js
-
 node_js:
-  - "4"
-  - "node"
-
+  - '4'
+  - node
 before_script:
   - npm run migrate
   - npm run seed
+deploy:
+api_key:
+email: leduc.paul@gmail.com
+provider: npm
+secure: "veYYl+kAB420lDn402D4sFUYhcawXOm1pxFbEIdkat5VPLxya4wVFfit5zqh3V5QePu8w0t4wf3lgtysUhdXlqAubJ59CIG7UEvIFZnHUJauQliXb6iMlRydGZKo4JW6i0YiduW4BN/ZrrpCr48pR9SDMiTlJ0jDUGFqvBIiWq07iUo1XN1ly0iXo3douoJuUtkl0S3Gd6aoFu4l8F9FWbDje1903Umeid1hjt3oLGBD9dKwJYHDo4A35bna7XDkdsJK2Bm1peD4bT7F8zuJFjJyPsPbRaqpfSnD999kYXYKRApS0JXBILzBHTTLMMDuayq/bCssjhQswSI4PzpTlga7MY7/hOIJt3qUDbY72Ulko5rqBpg/vPf1/RoM8nYy7hzysSQUjQNl/kB2yM9WX5FEzg1uL5YB9K9IdML2q/dxuoMq7AbwBqMpfijSLF5XHuHXEeeotcbKPyNcYpRQoj30+fUcDBcRT6P2dlFzSPfC0g2FvjMKJQzy1IGOhTG00SbtZhlKvKoReaOfJAn6LYk4YXHtsGJJKRBCe8QoigDB3PqxEdmUTvEoXaPpE+JGmxcX2z9H0ZpCPUoSOiRqkGz3K2kkb5v8XT8VScntQUrnicGJvHWaLb3Xzl31MCjdmvkGJREoCGEiWsMMOfahbxV/ao2Ebb932lkY9Gfe+bU="
