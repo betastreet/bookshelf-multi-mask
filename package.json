@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "bookshelf": ">=0.0.0 <1.0.0",
+    "codeclimate-test-reporter": "^0.4.0",
     "jest": "^16.0.2",
     "knex": ">=0.6.10 <0.12.0",
     "sqlite": "^2.2.4",
@@ -49,6 +50,7 @@
   "scripts": {
     "test": "jest",
     "test-cov": "npm test -- --coverage",
+    "code-climate": "codeclimate-test-reporter < coverage/lcov.info",
     "knex": "knex --knexfile test/db/knexfile.js",
     "migrate": "npm run knex -- migrate:latest",
     "seed": "npm run knex -- seed:run"
